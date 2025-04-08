@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: bank-api
+
+  data:
+    mongodb:
+      port: 27017
+      database: bank-oidc
+      host: localhost
+
+server:
+  port: 6001
+
+
