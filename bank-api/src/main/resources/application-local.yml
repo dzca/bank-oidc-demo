@@ -8,7 +8,16 @@ spring:
       database: bank-oidc
       host: localhost
 
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+
 server:
   port: 6001
+
+
 
 

@@ -1,3 +1,42 @@
 curl -X GET http://localhost:6001/user \
 -H "Authorization: Basic $(echo -n 'dustin@rbc.com:justdoit' | base64)" \
 -H "Content-Type: application/json"
+
+
+curl -X POST http://localhost:6001/register \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "John Doe",
+    "email": "john.doe@rbc.com",
+    "mobileNumber": "1234567890",
+    "pwd": "pass123",
+    "role": "USER",
+"authorities": [
+        {"id": "67f582056ac578733c2f44f9"},
+        {"id": "67f582056ac578733c2f44fa"}
+    ]
+}'
+
+curl -X POST http://localhost:6001/register \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "dustin",
+    "email": "dustin@rbc.com",
+    "mobileNumber": "1234567891",
+    "pwd": "pass123",
+    "role": "USER",
+"authorities": [
+        {"id": "67f582056ac578733c2f44f9"},
+        {"id": "67f582056ac578733c2f44fa"}
+    ]
+}'
+
+curl -X POST http://localhost:6001/register \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "mobileNumber": "0987654321",
+    "pwd": "password456",
+    "role": "USER"
+}'

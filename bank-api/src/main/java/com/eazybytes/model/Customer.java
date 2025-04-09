@@ -1,21 +1,36 @@
 package com.eazybytes.model;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.sql.Date;
+import java.util.Set;
 
-@Document(collection = "customer")
+
+@Document(collection = "customers")
 @Data
-@Builder
-@Slf4j
 public class Customer {
 
     @Id
     private String id;
+
+    private String name;
+
     private String email;
+    private String mobileNumber;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;
+
     private String role;
+
+    @JsonIgnore
+    private Date createDt;
+
+    @DBRef
+    private Set<Authority> authorities;
 }
